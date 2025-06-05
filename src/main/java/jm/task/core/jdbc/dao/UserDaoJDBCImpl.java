@@ -13,13 +13,14 @@ public class UserDaoJDBCImpl extends Util implements UserDao {
             "name VARCHAR(255), " +
             "lastName VARCHAR(255), " +
             "age TINYINT)";
-    private final static String DROP_TABLE = "DROP TABLE IF EXISTS users";
-    private final static String INSERT= "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";
-    private final static String DELETE = "DELETE FROM users WHERE id = ?";
-    private final static String SELECT_ALL = "SELECT * FROM users";
-    private final static String CLEAN_TABLE = "TRUNCATE TABLE users";
+    private static final String DROP_TABLE = "DROP TABLE IF EXISTS users";
+    private static final String INSERT = "INSERT INTO users (name, lastName, age) VALUES (?, ?, ?)";
+    private static final String DELETE = "DELETE FROM users WHERE id = ?";
+    private static final String SELECT_ALL = "SELECT * FROM users";
+    private static final String CLEAN_TABLE = "TRUNCATE TABLE users";
 
     private Connection connection = getConnection();
+
     public UserDaoJDBCImpl() {
 
     }
