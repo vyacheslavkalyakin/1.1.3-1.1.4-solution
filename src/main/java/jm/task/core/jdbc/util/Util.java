@@ -6,11 +6,11 @@ import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
+
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.util.Properties;
-import static jm.task.core.jdbc.util.Util.sessionFactory;
 
 public class Util {
     private static final String URL = "jdbc:mysql://localhost:3306/firstLesson";
@@ -26,9 +26,9 @@ public class Util {
         }
     }
 
-    public static SessionFactory sessionFactory;
+    private SessionFactory sessionFactory;
 
-    public static SessionFactory getSessionFactory() {
+    public SessionFactory getSessionFactory() {
         if (sessionFactory == null) {
             try {
                 Configuration configuration = new Configuration();
@@ -54,5 +54,10 @@ public class Util {
             }
         }
         return sessionFactory;
+    }
+    public void close() {
+        if (sessionFactory != null) {
+            sessionFactory.close();
+        }
     }
 }
